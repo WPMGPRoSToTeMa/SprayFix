@@ -1,0 +1,26 @@
+dist: trusty
+sudo: required
+language: cpp
+os: linux
+compiler: gcc
+addons:
+  apt:
+    sources: ubuntu-toolchain-r-test
+    packages:
+      - g++-6
+      - g++-6-multilib
+      - cmake
+before_install: eval "CC=gcc-6 && CXX=g++-6"
+script:
+  - mkdir build
+  - cd build
+  - cmake .. -DCMAKE_BUILD_TYPE=Release
+  - cmake --build .
+deploy:
+    provider: releases
+    file: SprayFix.so
+    skip_cleanup: true
+    overwrite: true
+    api_key: '$GITHUB_API_KEY'
+    on:
+      tags: true
