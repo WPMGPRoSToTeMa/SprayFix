@@ -56,15 +56,15 @@ extern "C" {
 	
 	int Meta_Query(char* interfaceVersion, plugin_info_t** pinfo, void* pMetaUtilFuncs) {
 		static plugin_info_t pluginInfo {
-			nullptr,
-			"6xxx spray fix",
-			"1.0RC1",
-			"2018.06.09",
-			"PRoSToC0der",
-			"",
-			"SPRAYFIX",
-			PT_ANYTIME,
-			PT_NEVER
+			.ifvers = nullptr,
+			.name = "6xxx spray fix",
+			.version = "1.0RC1",
+			.date = "2018.06.09",
+			.author = "PRoSToC0der",
+			.url = "",
+			.logtag = "SPRAYFIX",
+			.loadable = PT_ANYTIME,
+			.unloadable = PT_NEVER
 		};
 		pluginInfo.ifvers = interfaceVersion;
 		*pinfo = &pluginInfo;
